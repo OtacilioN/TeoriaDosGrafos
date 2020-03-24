@@ -11,19 +11,8 @@ class Graph {
     return this.vertices;
   }
 
-  _findVertex(v) {
-    const vLabel = v.getLabel();
-    const vertex = this.vertices.filter(i => i.getLabel() === vLabel);
-    if (vertex.length) {
-      return vertex[0];
-    } else {
-      return null;
-    }
-  }
-
   incidentEdges(v) {
-    const vertex = this._findVertex(v);
-    return vertex && vertex.getEdges();
+    return v && v.getEdges();
   }
 
   _findEdge(v, e) {
