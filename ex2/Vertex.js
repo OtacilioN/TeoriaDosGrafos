@@ -12,6 +12,11 @@ class Vertex {
     return this.label;
   }
 
+  replace(label, edges) {
+    this.label = label;
+    this.edges = edges;
+  }
+
   getEdges() {
     return this.edges;
   }

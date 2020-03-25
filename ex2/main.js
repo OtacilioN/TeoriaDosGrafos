@@ -8,6 +8,8 @@ const Edge = require("./Edge");
   const graph1 = new Graph();
   const vertexA = new Vertex("A");
   graph1.addVertex(vertexA);
+  console.log("graph1.vertices(): ", graph1.getVertices());
+  console.log("graph1.edges()", graph1.getEdges());
   console.log(
     "graph1.incidentEdges(vertexA) :\n",
     graph1.incidentEdges(vertexA)
@@ -26,6 +28,8 @@ const Edge = require("./Edge");
   vertexB.addEdge(edgeB);
   graph2.addVertex(vertexA);
   graph2.addVertex(vertexB);
+  console.log("graph2.vertices(): ", graph2.getVertices());
+  console.log("graph2.edges()", graph2.getEdges());
   console.log(
     "graph2.incidentEdges(vertexA) :\n",
     graph2.incidentEdges(vertexA)

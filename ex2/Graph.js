@@ -7,8 +7,25 @@ class Graph {
     this.vertices.push(vertex);
   }
 
+  // renamed vertices to getVertices to avoid anti pattern naming
   getVertices() {
     return this.vertices;
+  }
+
+  // renamed edges to getEdges to avoid anti pattern naming
+  getEdges() {
+    const edgeObj = {};
+    this.getVertices().forEach(v => {
+      const incidentEdges = this.incidentEdges(v);
+      incidentEdges.forEach(e => {
+        edgeObj[
+          e.getLabel()
+        ] = `${v.getLabel()}--${e.getLabel()}--${e
+          .getOppositeVertex()
+          .getLabel()}`;
+      });
+    });
+    return edgeObj;
   }
 
   incidentEdges(v) {
@@ -43,6 +60,11 @@ class Graph {
       i => i.getOppositeVertex().getLabel() === wLabel
     );
     return !!oppositeEdge.length;
+  }
+
+  replace(v, x) {
+    const vCopy = Object.assign({}, v);
+    xIncidents = this.incidentEdges(v);
   }
 }
 
