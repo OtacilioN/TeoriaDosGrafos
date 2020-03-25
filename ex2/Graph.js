@@ -65,10 +65,12 @@ class Graph {
     return !!oppositeEdge.length;
   }
 
-  replace(v, x) {
-    const vCopy = Object.assign({}, v);
-    xIncidents = this.incidentEdges(v);
-  }
+  // Out of time today, I have to finish one feature to my formal job
+  // Unfinished function
+  // replace(v, x) {
+  //   const vCopy = Object.assign({}, v);
+  //   xIncidents = this.incidentEdges(v);
+  // }
 }
 
 module.exports = Graph;
