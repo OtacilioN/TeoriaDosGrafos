@@ -14,18 +14,21 @@ class Graph {
 
   // renamed edges to getEdges to avoid anti pattern naming
   getEdges() {
-    const edgeObj = {};
+    const edgeArr = [];
     this.getVertices().forEach(v => {
       const incidentEdges = this.incidentEdges(v);
       incidentEdges.forEach(e => {
-        edgeObj[
-          e.getLabel()
-        ] = `${v.getLabel()}--${e.getLabel()}--${e
-          .getOppositeVertex()
-          .getLabel()}`;
+        const edgeObj = {};
+        edgeObj[e.getLabel()] = {
+          toString: `${v.getLabel()}--${e.getLabel()}--${e
+            .getOppositeVertex()
+            .getLabel()}`,
+          edge: e
+        };
+        edgeArr.push(edgeObj);
       });
     });
-    return edgeObj;
+    return edgeArr;
   }
 
   incidentEdges(v) {
