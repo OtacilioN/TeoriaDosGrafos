@@ -86,5 +86,42 @@ class LinkedBinaryTree {
     node.setRightSon(rightNode);
     return rightNode;
   }
+  _preOrderSearch(node) {
+    if (!node) {
+      return [];
+    }
+    if (this.isExternal(node)) {
+      return [node.getElement()];
+    }
+    const element = node.getElement();
+    return [element]
+      .concat(this._preOrderSearch(node.getLeftSon()))
+      .concat(this._preOrderSearch(node.getRightSon()));
+  }
+
+  _posOrderSearch(node) {
+    if (!node) {
+      return [];
+    }
+    if (this.isExternal(node)) {
+      return [node.getElement()];
+    }
+    return this._posOrderSearch(node.getLeftSon())
+      .concat(this._posOrderSearch(node.getRightSon()))
+      .concat(node.getElement());
+  }
+
+  toStringPreOrder() {
+    return JSON.stringify(this._preOrderSearch(this.root));
+  }
+  toStringPosOrder() {
+    return JSON.stringify(this._posOrderSearch(this.root));
+  }
+  depth(node) {
+    if (node === this.root) {
+      return 0;
+    }
+    return 1 + this.depth(node.getFather());
+  }
 }
 module.exports = LinkedBinaryTree;
